@@ -13,3 +13,4 @@ public/css
 public/app/css
 public/js
 public/components
+!.env.example.php
