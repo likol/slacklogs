@@ -9,20 +9,24 @@ A logger for Slack Channels, built with Laravel and MongoDB
 * PHP Extension : [Mcrypt], [mongo]
 * [MongoDB]
 * [Composer]
+* [npm]
 
 # Install from git
 
 ``` bash
 $ git clone --depth 1 http://git.crenosmart.com:8080/crenosmart/slacklogs.git
 $ composer install
+$ npm install
+$ npm run release
 ```
+
 # Set-up
 
 先至 slack 新增一個自訂的機器人，並記下 Api token
 
 ``` bash
-/var/www/slacklogs$ cp .env.example.php .env.php
-/var/www/slacklogs$ sed -i 's/REPLACE/YOUR SLACK CUSTOMIZATION BOT API TOKEN/g' .env.php
+/var/www/slacklogs$ cp .env.example .env
+/var/www/slacklogs$ sed -i 's/Slack BOT Auth Key/xoxb-123456-ABCD/g' .env
 ```
 # How to use
 
@@ -48,4 +52,4 @@ $ composer install
 [Mcrypt]: http://php.net/manual/en/book.mcrypt.php
 [mongo]: http://php.net/manual/en/book.mongo.php
 [mongoDB]: http://docs.mongodb.org/manual/administration/install-on-linux/
-
+[npm]: https://www.npmjs.com/
