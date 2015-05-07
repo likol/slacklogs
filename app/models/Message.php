@@ -1,6 +1,8 @@
 <?php
 
-class Message extends Moloquent {
+class Message extends Moloquent
+{
+    protected $connection = 'mongodb';
 
     protected $collection = 'messages';
 

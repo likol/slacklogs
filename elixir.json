@@ -1,6 +1,7 @@
 {
-  "assetsDir": "public/app/",
+  "cssInput": "resources/css/",
   "cssOutput": "public/css/",
+  "jsInput": "resources/js/",
   "jsOutput": "public/js/",
-  "bowerDir": "public/components/"
+  "bowerDir": "resources/components/"
 }

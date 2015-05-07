@@ -1,17 +1,44 @@
 var elixir = require('laravel-elixir');
+elixir.config.sourcemaps = false;
+
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Less
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
 
 elixir(function(mix) {
-    mix.sass('public/app/sass/styles.scss' , "public/app/css/")
+    mix.sass('styles.scss', elixir.config.cssInput)
+	    .copy(elixir.config.bowerDir +'normalize-css/normalize.css', 
+		      elixir.config.cssInput)
+		.copy(elixir.config.bowerDir + 'emojify.js/dist/css/basic/emojify.css',
+			  elixir.config.cssInput)
         .styles([
-            elixir.config.bowerDir + 'normalize-css/normalize.css',
-            'public/app/css/styles.css'
-        ])
+            'normalize.css',
+            'styles.css',
+			'emojify.css'
+        ], 'public/css/all.css')
+		.copy(elixir.config.bowerDir + 'jquery/dist/jquery.js',
+			  elixir.config.jsInput)
+		.copy(elixir.config.bowerDir + 'jquery-linkify/dist/jquery.linkify.js',
+			  elixir.config.jsInput)
+		.copy(elixir.config.bowerDir + 'jquery-waypoints/waypoints.js',
+			  elixir.config.jsInput)
+		.copy(elixir.config.bowerDir + 'emojify.js/dist/js/emojify.js',
+			  elixir.config.jsInput)
         .scripts([
-            elixir.config.bowerDir + 'jquery/dist/jquery.js',
-            elixir.config.bowerDir + 'jquery-waypoints/waypoints.js',
-            elixir.config.bowerDir + 'jquery-linkify/jquery.linkify.js',
-            elixir.config.assetsDir + 'js/scripts.js',
-            elixir.config.assetsDir + 'js/infinite-scrolling.js'
-        ]);
-
+            'jquery.js',
+            'waypoints.js',
+            'jquery.linkify.js',
+			'emojify.js',
+            'scripts.js',
+            'infinite-scrolling.js'	
+        ], 'public/js/all.js')
+		.copy(elixir.config.bowerDir + 'emojify.js/dist/images/basic/',
+			  'public/img/basic');
 });
