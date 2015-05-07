@@ -17,10 +17,9 @@
     "url": "https://github.com/laravel-taiwan/slacklogs/issues"
   },
   "devDependencies": {
-    "bower": "*",
-    "gulp": "*",
-    "laravel-elixir": "*",
-    "laravel-elixir-compass": "*"
+    "bower": "1.4.1",
+    "gulp": "3.8.11",
+    "laravel-elixir": "1.0.1"
   }
 }
 

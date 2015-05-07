@@ -8,7 +8,6 @@ _ide_helper.php
 *.lock
 /.buildpath
 /.project
-/storage
 /public/img/basic
 /public/js
 /public/css

@@ -1,7 +1,6 @@
 /components
-/node_modules
-/assets/css
-/assets/js
-!/assets/js/infinite-scrolling.js
-!/assets/js/scripts.js
+/assets/css/*
+/assets/js/*
+!infinite-scrolling.js
+!scripts.js
 

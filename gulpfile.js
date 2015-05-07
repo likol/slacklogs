@@ -25,15 +25,15 @@ elixir(function(mix) {
         ], 'public/css/all.css')
 		.copy(elixir.config.bowerDir + 'jquery/dist/jquery.js',
 			  elixir.config.jsInput)
-		.copy(elixir.config.bowerDir + 'jquery-linkify/dist/jquery.linkify.js',
+		.copy(elixir.config.bowerDir + 'jQuery-linkify/dist/jquery.linkify.js',
 			  elixir.config.jsInput)
-		.copy(elixir.config.bowerDir + 'jquery-waypoints/waypoints.js',
+		.copy(elixir.config.bowerDir + 'jquery-waypoints/lib/jquery.waypoints.js',
 			  elixir.config.jsInput)
 		.copy(elixir.config.bowerDir + 'emojify.js/dist/js/emojify.js',
 			  elixir.config.jsInput)
         .scripts([
             'jquery.js',
-            'waypoints.js',
+            'jquery.waypoints.js',
             'jquery.linkify.js',
 			'emojify.js',
             'scripts.js',

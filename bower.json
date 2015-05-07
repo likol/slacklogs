@@ -4,7 +4,7 @@
   "dependencies": {
     "jquery": "latest",
     "jQuery-linkify": "latest",
-    "jquery-waypoints": "2.0.2",
+    "jquery-waypoints": "latest",
     "normalize-css": "latest",
 	"emojify.js": "latest"
   }
