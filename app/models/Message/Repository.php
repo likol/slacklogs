@@ -100,22 +100,28 @@ class Repository
      */
     public static function getTimeLine(\Channel $channel)
     {
-        $timeline = [];
-
+        $timeline = array();
         // Fetch start and end time
         $firstMsg = \Message::where('channel', $channel->sid)->orderBy('ts', 'asc')->first();
         $lastMsg = \Message::where('channel', $channel->sid)->orderBy('ts', 'desc')->first();
         $firstDate = $firstMsg->getCarbon()->format('Y-m-d');
         $lastDate = $lastMsg->getCarbon()->format('Y-m-d');
-
-        // Loop and add to timeline
+        
+		// Loop and add to timeline
         while(strtotime($firstDate) <= strtotime($lastDate)) {
+            $oneDay = array((string)strtotime($firstDate), (string)strtotime("+1 day", strtotime($firstDate)));
+            $haveDate = \Message::where('channel', $channel->sid)
+		    ->whereBetween('ts', $oneDay)
+		    ->count();
+            //var_dump($haveDate);
             list($year, $month, $day) = explode('-', $firstDate);
-            $timeline[$year][$month][$day] = \Carbon::createFromDate($year, $month, $day);
-
+            if ($haveDate)
+            {
+                $timeline[$year][$month][$day] = \Carbon::createFromDate($year, $month, $day);
+            }
             $firstDate = date('Y-m-d', strtotime("+1 day", strtotime($firstDate)));
         }
-
+		//var_dump( $timeline );
         return $timeline;
     }
 
