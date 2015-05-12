@@ -43,7 +43,7 @@ class LogsController extends BaseController
         }
 
         if ($date && !$datetime) {
-            $datetime = DateTime::createFromFormat($this->dateFormat, $date);
+            $datetime = new \Datetime ($date);
         }
 
         if ($datetime) {
