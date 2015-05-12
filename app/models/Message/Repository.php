@@ -68,9 +68,8 @@ class Repository
     {
         $timestamp = $date->getTimestamp();
 
-
         $messages = \Message::where('channel', $channel->sid)
-            ->where('ts', '>', "$timestamp")
+            ->where('ts', '>=', "$timestamp")
             ->take(static::$downLimit)
             ->orderBy('ts', 'asc')->get();
 
@@ -85,7 +84,7 @@ class Repository
         $previousMessages = array_reverse(static::convertCollection($previousMessages));
 
         return [
-            end($previousMessages),
+            reset($messages),
             array_merge($previousMessages, $messages),
             count($previousMessages) == static::$upLimit ? reset($previousMessages)->_id : null,
             count($messages) == static::$downLimit ? end($messages)->_id : null
