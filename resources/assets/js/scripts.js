@@ -17,6 +17,7 @@ headerSearch = $('.header-search');
 logs = $('.logs');
 
 logs.on('contentChanged', function(){
+	emojify.run();
     $('.logs .new-log').linkify({target: '_blank'});
     $('.new-log').removeClass('new-log');
     // Log navigation: do not reload the page when we are not displaying search results
@@ -99,7 +100,7 @@ $('.timeline a').click(function (event) {
 
 // Highlight current message and scroll to it
 function moveTo(elem, speed) {
-    $('body').animate({
+    $('body, html').animate({
         scrollTop: $(elem).offset().top - $('header').height()
     }, speed);
 }
