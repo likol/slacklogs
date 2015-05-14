@@ -44,15 +44,15 @@ class Repository
     public static function getLatest(\Channel $channel)
     {
         $messages = \Message::where('channel', $channel->sid)
-            ->take(static::$downLimit + static::$upLimit)
+            ->take(static::$downLimit)
             ->orderBy('ts', 'desc')->get();
-
+        
         $messages = array_reverse(static::convertCollection($messages));
 
         return [
             end($messages),
             $messages,
-            count($messages) == static::$upLimit + static::$downLimit ? reset($messages)->_id : null
+            count($messages) == static::$downLimit ? reset($messages)->_id : null
         ];
     }
 
@@ -113,7 +113,6 @@ class Repository
             $haveDate = \Message::where('channel', $channel->sid)
 		    ->whereBetween('ts', $oneDay)
 		    ->count();
-            //var_dump($haveDate);
             list($year, $month, $day) = explode('-', $firstDate);
             if ($haveDate)
             {
