@@ -1,4 +1,3 @@
-
 // Infinite scrolling ---------------------------------------------- /
 
 function prepareWaypoint(container, wpDirection) {
@@ -15,8 +14,9 @@ function prepareWaypoint(container, wpDirection) {
 
 
     $container.waypoint({
-        offset: offset,
+		offset: offset,
         handler: function (direction) {
+			console.log(direction);
             if (direction !== wpDirection) {
                 return;
             }
@@ -24,10 +24,8 @@ function prepareWaypoint(container, wpDirection) {
             if (!$more.length) {
                 return; // No way to disable only the up or the down waypoint
             }
-            $container.waypoint('disable');
-            $container.addClass('infinite-loading');
-
-            $.get($more.attr('href'), function (data) {
+			
+			$.get($more.attr('href'), function (data) {
                 $more.remove();
                 if (direction === 'up') {
                     var scrollTo = $($('.logs').children()[0]);
@@ -36,12 +34,10 @@ function prepareWaypoint(container, wpDirection) {
                 } else if (direction === 'down') {
                     $container.append(data);
                 }
-                $container.trigger('contentChanged');
-
-                $container.removeClass('infinite-loading');
-                $container.waypoint('enable');
+				$container.trigger('contentChanged');
             });
-        }
+			
+		}
     });
 
 }
