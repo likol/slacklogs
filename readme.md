@@ -1,5 +1,6 @@
 Slacklogs
 =========
+Fork from [laravel-taiwan/slacklogs]
 
 A logger for Slack Channels, built with Laravel and MongoDB
 
@@ -14,7 +15,7 @@ A logger for Slack Channels, built with Laravel and MongoDB
 # Install from git
 
 ``` bash
-$ git clone --depth 1 http://git.crenosmart.com:8080/crenosmart/slacklogs.git
+$ git clone https://github.com/likol/slacklogs.git
 $ composer install
 $ npm install
 $ npm run release
@@ -53,3 +54,4 @@ $ npm run release
 [mongo]: http://php.net/manual/en/book.mongo.php
 [mongoDB]: http://docs.mongodb.org/manual/administration/install-on-linux/
 [npm]: https://www.npmjs.com/
+[laravel-taiwan/slacklogs]: https://github.com/laravel-taiwan/slacklogs
