@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    $channel = Channel::orderBy('num_members', 'desc')
+    $channel = Channel::orderBy('latest', 'desc')
         ->firstOrFail();
 
     return Redirect::to($channel->name);

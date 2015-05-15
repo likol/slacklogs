@@ -120,7 +120,7 @@ class Repository
             }
             $firstDate = date('Y-m-d', strtotime("+1 day", strtotime($firstDate)));
         }
-		//var_dump( $timeline );
+
         return $timeline;
     }
 
