@@ -21,8 +21,11 @@ class LogsController extends BaseController
      *
      * @var int
      */
-    protected $ajaxLoad = 200;
-
+    function getLimit()
+    {
+        return (int)\Config::get('app.MESSAGES_LIMIT');
+    }
+    
     public function index()
     {
         return View::make('index');
@@ -92,13 +95,13 @@ class LogsController extends BaseController
             $logs = Message::where('channel', $channel->sid)
                 ->where('ts', '<', "$log->ts")
                 ->orderBy('ts', 'desc')
-                ->take($this->ajaxLoad)
+                ->take(self::getLimit())
                 ->get();
         } else {
             $logs = Message::where('channel', $channel->sid)
                 ->where('ts', '>', "$log->ts")
                 ->orderBy('ts', 'asc')
-                ->take($this->ajaxLoad)
+                ->take(self::getLimit())
                 ->get();
         }
 
@@ -106,7 +109,7 @@ class LogsController extends BaseController
 
         $loadMore = null;
 
-        if (count($logs) === $this->ajaxLoad) {
+        if (count($logs) === self::getLimit()) {
             $loadMore = end($logs)->_id;
         }
 
