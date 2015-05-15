@@ -12,16 +12,15 @@ function prepareWaypoint(container, wpDirection) {
         offset = $('header').height();
     }
 
-
-    $container.waypoint({
+	var waypoint = new Waypoint({
+		element: $container,
 		offset: offset,
-        handler: function (direction) {
-			console.log(direction);
+		handler: function (direction) {
             if (direction !== wpDirection) {
                 return;
             }
-            var $more = $(more);
-            if (!$more.length) {
+			var $more = $(more);
+			if (!$more.length) {
                 return; // No way to disable only the up or the down waypoint
             }
 			
@@ -33,13 +32,14 @@ function prepareWaypoint(container, wpDirection) {
                     moveTo(scrollTo, 0);
                 } else if (direction === 'down') {
                     $container.append(data);
+					waypoint.destroy();
+					$container.trigger('contentChanged');
+					prepareWaypoint('.logs', 'down');
                 }
-				$container.trigger('contentChanged');
+				
             });
-			
 		}
-    });
-
+	});
 }
 
 prepareWaypoint('.logs', 'up');
